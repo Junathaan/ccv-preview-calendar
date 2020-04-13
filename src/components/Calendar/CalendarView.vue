@@ -34,12 +34,16 @@ export default {
 
   methods: {
     async getEvents() {
+      let date = new Date().toLocaleString().split(' ')[0];
+
       const events = await eventsDb.readAll([
         ['calendarId', '==', 'ccavrac2@gmail.com'],
+        ['date', '>=', date],
       ]);
 
       const eventsMain = await eventsDb.readAll([
         ['calendarId', '==', 'ccavrac@gmail.com'],
+        ['date', '>=', date],
       ]);
 
       this.events = events;
@@ -55,6 +59,8 @@ export default {
     display: inline-block;
     vertical-align: top;
     position: relative;
+
+    &:nth-of-type(2) { margin-left: 20px; }
 
     &__sub-title {
       position: absolute;
