@@ -6,7 +6,7 @@
           {{ calendar.day }}
           <span class="calendar__container__title__date">{{ calendar.date.slice(0, 5) }}</span>
         </h1>
-        <p class="calendar__container__sub-title">{{ corner[calendar.day] }}</p>
+        <p class="calendar__container__sub-title" v-html="corner[calendar.day]"></p>
 
         <div class="calendar__container__buttons">
           <button :disabled="currentDay === 0" @click="prevDay">&lsaquo; Jour précédent</button>
@@ -36,11 +36,11 @@ export default {
     return {
       currentDay: 0,
       corner: {
-        lundi: 'Fb de Béthune - Lille Sud',
-        mardi: 'Vauban Esquermes - Bois Blanc',
-        mercredi: 'Vieux-Lille - Lille-centre',
-        jeudi: 'Fives - St Maurice Pellevoisin',
-        vendredi: 'Wazemmes - Moulin',
+        lundi: '&bull;&nbsp;Lille-Moulins &bull;&nbsp;Lille-Sud',
+        mardi: '&bull;&nbsp;Vauban Esquermes &bull;&nbsp;Bois Blanc &bull;&nbsp;Faubourg de Béthune',
+        mercredi: '&bull;&nbsp;St Maurice Pellevoisin &bull;&nbsp;Vieux-Lille',
+        jeudi: '&bull;&nbsp;Fives',
+        vendredi: '&bull;&nbsp;Wazemmes &bull;&nbsp;Lille-centre',
       }
     };
   },

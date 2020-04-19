@@ -1,12 +1,12 @@
 <template>
   <div class="page-wrapper">
     <div v-if="eventsMain.length" class="item-container">
-      <p class="item-container__sub-title">🚲 Vélo 1</p>
+      <p class="item-container__sub-title"><img src="@/assets/Picto_velo_1.svg" /> <span>Vélo 1</span></p>
       <CalendarContainer :events="eventsMain" />
     </div>
 
     <div v-if="events.length" class="item-container">
-      <p class="item-container__sub-title">🚲 Vélo 2</p>
+      <p class="item-container__sub-title"><img src="@/assets/Picto_velo_2.svg" /> <span>Vélo 2</span></p>
       <CalendarContainer :events="events" />
     </div>
   </div>
@@ -63,10 +63,15 @@ export default {
     &:nth-of-type(2) { margin-left: 20px; }
 
     &__sub-title {
+      width: 100px;
+      text-align: right;
       position: absolute;
       font-weight: bold;
       top: 30px;
       right: 20px;
+
+      img, span { display: inline-block; vertical-align: middle; }
+      img { max-width: 40px; }
     }
   }
 </style>
