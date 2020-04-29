@@ -34,16 +34,18 @@ export default {
 
   methods: {
     async getEvents() {
-      let date = new Date().toLocaleString().split(' ')[0];
+      let date = new Date().toLocaleString().split('/');
+
+      let newDate = date[2].split(' ')[0] + date[1] + date[0]; 
 
       const events = await eventsDb.readAll([
         ['calendarId', '==', 'ccavrac2@gmail.com'],
-        ['date', '>=', date],
+        ['idDate', '>=', newDate],
       ]);
 
       const eventsMain = await eventsDb.readAll([
         ['calendarId', '==', 'ccavrac@gmail.com'],
-        ['date', '>=', date],
+        ['idDate', '>=', newDate],
       ]);
 
       this.events = events;
@@ -60,7 +62,11 @@ export default {
     vertical-align: top;
     position: relative;
 
-    &:nth-of-type(2) { margin-left: 20px; }
+    &:nth-of-type(2) { 
+      @media (min-width: 740px) {
+        margin-left: 20px; 
+      }
+    }
 
     &__sub-title {
       text-align: center;
